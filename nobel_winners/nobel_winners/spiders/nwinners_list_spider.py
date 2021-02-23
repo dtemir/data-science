@@ -79,32 +79,6 @@ class NWinnerSpider(scrapy.Spider):
         yield item
 
 
-def get_persondata(table, item):
-    fields = ['Date of birth', 'Place of birth', 'Date of death', 'Place of death']
-    for tr in table.xpath('tr'):
-        label = tr.xpath('td[@class="persondata-label"]/text()').extract()
-        if label and label[0] in fields:
-            text = ' '.join(tr.xpath('td[not(@class)]/descendant-or-self::text()').extract())
-            print(text)
-            item[label[0].lower().replace(' ', '_')] = text
-
-
-def guess_gender(text, threshold=0):
-    import re
-
-    he = len(list(re.finditer(' he ', text)))
-    she = len(list(re.finditer(' she ', text)))
-    diff = she - he
-
-    print('she %d, he %d, diff %d'%(she, he, diff))
-    if diff > threshold:
-        return 'female'
-    elif diff < -threshold:
-        return 'male'
-    else:
-        return None
-
-
 def process_winner_li(w, country=None):
     """
     Process a winner's <li> tag, adding country of birth or nationality,
