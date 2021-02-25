@@ -17,7 +17,7 @@
   
   <details>
 
-    * We use **Scrapy** and xpath scrape data from the pages.
+    * We use **Scrapy** and xpath to scrape data from the pages.
     * The first spider is [**nwinners_list_spider**](https://github.com/dtemir/data-science/blob/main/data-visualization-oreilly/nobel_winners/nobel_winners/spiders/nwinners_list_spider.py), 
       for scraping a list of Nobel Laureates into a *json* file, [**nobel_winners.json**](https://github.com/dtemir/data-science/blob/main/data-visualization-oreilly/nobel_winners/nobel_winners/nobel_winners.json).
       * The spider scrapes information like name, year, category, country, year of birth, year of death.
